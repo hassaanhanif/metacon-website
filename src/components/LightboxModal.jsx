@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, MapPin, Calendar, Check, ArrowRight, Layers, ShieldCheck } from 'lucide-react';
 
 export default function LightboxModal({ project, onClose, onInquire }) {
+  useEffect(() => {
+    if (!project) return;
+    const scrollY = window.scrollY;
+    const originalPosition = document.body.style.position;
+    const originalTop = document.body.style.top;
+    const originalWidth = document.body.style.width;
+    const originalOverflow = document.body.style.overflow;
+
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
+      document.body.style.width = originalWidth;
+      document.body.style.overflow = originalOverflow;
+      window.scrollTo(0, scrollY);
+    };
+  }, [project]);
+
   if (!project) return null;
 
   return (
@@ -107,7 +129,7 @@ export default function LightboxModal({ project, onClose, onInquire }) {
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(4, 6, 9, 0.9);
+          background: rgba(4, 6, 9, 0.94);
           backdrop-filter: blur(12px);
           z-index: 2000;
           display: flex;
@@ -115,6 +137,15 @@ export default function LightboxModal({ project, onClose, onInquire }) {
           justify-content: center;
           padding: 24px;
           animation: fadeIn 0.3s ease;
+          overscroll-behavior: contain;
+          touch-action: pan-y;
+        }
+        @media (max-width: 768px) {
+          .lightbox-overlay {
+            background: rgba(4, 6, 9, 0.98);
+            padding: 12px;
+            align-items: flex-start;
+          }
         }
         .lightbox-modal-content {
           background: #11151f;
@@ -123,7 +154,10 @@ export default function LightboxModal({ project, onClose, onInquire }) {
           max-width: 1050px;
           width: 100%;
           max-height: 90vh;
+          max-height: 90dvh;
           overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          overscroll-behavior: contain;
           position: relative;
           box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
         }

@@ -94,7 +94,7 @@ export default function App() {
       </main>
 
       {/* Global Footer */}
-      <Footer setActivePage={handlePageChange} />
+      <Footer activePage={activePage} setActivePage={handlePageChange} />
 
       {/* Floating WhatsApp Action Button */}
       <FloatingWhatsApp />

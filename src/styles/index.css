@@ -33,8 +33,10 @@
   --border-medium: rgba(255, 255, 255, 0.14);
   --border-gold: rgba(197, 154, 99, 0.38);
 
-  /* Fonts */
-  --font-heading: 'Oswald', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Fonts: Outfit (Sleek Architectural Headings) & Oswald (Hero Title Only) */
+  --font-heading: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-hero: 'Oswald', 'Outfit', sans-serif;
   --font-body: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Radii */
@@ -131,9 +133,29 @@ img {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--text-pure);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-weight: 350;
+  line-height: 1.22;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-weight: 350;
+  letter-spacing: 0.015em;
+}
+
+h3, h4, h5, h6 {
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.font-serif {
+  font-family: var(--font-heading) !important;
+  font-weight: 350 !important;
 }
 
 .text-gold-gradient {
@@ -153,19 +175,54 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--gold-border);
   color: var(--gold-light);
   font-size: 0.775rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 16px;
 }
 
 .section-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.5vw, 2.85rem);
-  font-weight: 800;
+  font-family: var(--font-heading) !important;
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  font-weight: 300 !important;
   color: var(--text-pure);
   margin-bottom: 16px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.015em;
+}
+
+/* Specific sleek rules for white headings across the site (except hero image) */
+.services-page-title,
+.portfolio-page-title,
+.about-page-title,
+.banner-title,
+.service-title,
+.card-heading,
+.pillar-title,
+.card-title,
+.city-card-title,
+.service-card-heading,
+.lightbox-title,
+.cta-panel-title,
+.action-title,
+.d-title,
+.principle-name,
+.guarantee-title,
+.step-name,
+.mid-cta-heading {
+  font-family: var(--font-heading) !important;
+  font-weight: 350 !important;
+}
+
+/* Allow hero main title to maintain its bold punchy style as requested ("not on hero image") */
+.hero-main-title,
+.hero-main-title * {
+  font-family: var(--font-hero) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+}
+
+p strong, strong.text-white {
+  font-weight: 500;
 }
 
 .section-subtitle {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapPin, Phone, Mail, ArrowUp, ShieldCheck, Award } from 'lucide-react';
 
-export default function Footer({ setActivePage }) {
+export default function Footer({ activePage = 'home', setActivePage }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -44,53 +44,56 @@ export default function Footer({ setActivePage }) {
 
       {/* Main Footer Body */}
       <div className="container footer-body">
-        <div className="footer-columns-row">
-          {/* Company Bio */}
-          <div className="col-brand">
-            <div className="brand-logo-container" onClick={() => handleNav('home')}>
-              <img 
-                src="/images/metacon-logo-mark.png" 
-                alt="METACON Logo" 
-                className="footer-logo-img" 
-              />
-              <div className="footer-brand-text">
-                <span className="footer-brand-title font-serif">METACON</span>
-                <span className="footer-brand-subtitle">DESIGN · BUILD · DECORATE</span>
+        {/* Main Columns: Metacon Bio, Navigation & Compliance (Only on Home Page) */}
+        {activePage === 'home' && (
+          <div className="footer-columns-row">
+            {/* Company Bio */}
+            <div className="col-brand">
+              <div className="brand-logo-container" onClick={() => handleNav('home')}>
+                <img 
+                  src="/images/metacon-logo-mark.png" 
+                  alt="METACON Logo" 
+                  className="footer-logo-img" 
+                />
+                <div className="footer-brand-text">
+                  <span className="footer-brand-title font-serif">METACON</span>
+                  <span className="footer-brand-subtitle">DESIGN · BUILD · DECORATE</span>
+                </div>
+              </div>
+              <p className="footer-description">
+                Founded 20 years ago, serving communities with integrity and structural reliability. Today, that legacy is powered by a team of three young engineers & developers bridging time-tested construction standards with modern architectural engineering.
+              </p>
+              <div className="authority-chips">
+                <span className="chip"><Award size={12} className="bronze-icon" /> 20-Year Heritage</span>
+                <span className="chip"><ShieldCheck size={12} className="bronze-icon" /> Seismic Code Certified</span>
               </div>
             </div>
-            <p className="footer-description">
-              Founded 20 years ago, serving communities with integrity and structural reliability. Today, that legacy is powered by a team of three young engineers & developers bridging time-tested construction standards with modern architectural engineering.
-            </p>
-            <div className="authority-chips">
-              <span className="chip"><Award size={12} className="bronze-icon" /> 20-Year Heritage</span>
-              <span className="chip"><ShieldCheck size={12} className="bronze-icon" /> Seismic Code Certified</span>
+
+            {/* Navigation Links */}
+            <div className="col-nav">
+              <h4 className="col-heading font-serif">Navigation</h4>
+              <ul className="footer-links">
+                <li><button onClick={() => handleNav('home')}>Home</button></li>
+                <li><button onClick={() => handleNav('services')}>Residential Services</button></li>
+                <li><button onClick={() => handleNav('portfolio')}>Portfolio</button></li>
+                <li><button onClick={() => handleNav('about')}>About Us</button></li>
+                <li><button onClick={() => handleNav('contact')}>Contact & Consultation</button></li>
+              </ul>
+            </div>
+
+            {/* Regional Authorities */}
+            <div className="col-authorities">
+              <h4 className="col-heading font-serif">Compliance Authorities</h4>
+              <ul className="footer-links-static">
+                <li>• CDA (Capital Development Authority)</li>
+                <li>• RDA (Rawalpindi Development Authority)</li>
+                <li>• LDA (Lahore Development Authority)</li>
+                <li>• PDA (Peshawar Development Authority)</li>
+                <li>• DHA & Bahria Town Approved</li>
+              </ul>
             </div>
           </div>
-
-          {/* Navigation Links */}
-          <div className="col-nav">
-            <h4 className="col-heading font-serif">Navigation</h4>
-            <ul className="footer-links">
-              <li><button onClick={() => handleNav('home')}>Home</button></li>
-              <li><button onClick={() => handleNav('services')}>Residential Services</button></li>
-              <li><button onClick={() => handleNav('portfolio')}>Portfolio</button></li>
-              <li><button onClick={() => handleNav('about')}>About Us</button></li>
-              <li><button onClick={() => handleNav('contact')}>Contact & Consultation</button></li>
-            </ul>
-          </div>
-
-          {/* Regional Authorities */}
-          <div className="col-authorities">
-            <h4 className="col-heading font-serif">Compliance Authorities</h4>
-            <ul className="footer-links-static">
-              <li>• CDA (Capital Development Authority)</li>
-              <li>• RDA (Rawalpindi Development Authority)</li>
-              <li>• LDA (Lahore Development Authority)</li>
-              <li>• PDA (Peshawar Development Authority)</li>
-              <li>• DHA & Bahria Town Approved</li>
-            </ul>
-          </div>
-        </div>
+        )}
 
         {/* The Exact 2-Column Regional Office Layout (From Docx Developer Note) */}
         <div className="regional-divider-strip">
@@ -254,6 +257,36 @@ export default function Footer({ setActivePage }) {
             grid-template-columns: 1fr;
             gap: 32px;
           }
+        }
+        .footer-logo-img {
+          height: 42px;
+          width: auto;
+          object-fit: contain;
+          filter: drop-shadow(0 0 8px rgba(223, 185, 135, 0.35));
+        }
+        .footer-brand-text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .footer-brand-title {
+          font-family: var(--font-serif);
+          font-size: 1.65rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          color: var(--text-pure);
+          line-height: 1;
+          text-align: center;
+        }
+        .footer-brand-subtitle {
+          font-size: 0.65rem;
+          letter-spacing: 0.2em;
+          color: var(--bronze-light);
+          font-weight: 600;
+          margin-top: 4px;
+          text-align: center;
+          width: 100%;
         }
         .col-brand {
           display: flex;

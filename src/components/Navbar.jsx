@@ -47,19 +47,6 @@ export default function Navbar({ activePage, setActivePage }) {
 
   return (
     <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-      {/* Top Authority Strip */}
-      <div className="top-authority-bar">
-        <div className="container top-bar-content">
-          <div className="authority-tags">
-            <span className="authority-badge">
-              <ShieldCheck size={13} className="gold-icon" /> CDA · LDA · PDA · DHA Compliant
-            </span>
-            <span className="dot-sep">|</span>
-            <span className="cities-text">Islamabad · Rawalpindi · Lahore · Peshawar</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Nav Bar */}
       <nav className="main-navbar">
         <div className="container nav-content">
@@ -211,45 +198,8 @@ export default function Navbar({ activePage, setActivePage }) {
           border-bottom: 1px solid var(--border-bronze);
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
-        .top-authority-bar {
-          background: #090a0d;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-          font-size: 0.725rem;
-          padding: 5px 0;
-          color: var(--text-dim);
-        }
-        .top-bar-content {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .authority-tags {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .authority-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          color: var(--bronze-light);
-          font-weight: 600;
-        }
-        .bronze-icon {
-          color: var(--bronze-primary);
-        }
-        .dot-sep {
-          color: rgba(255, 255, 255, 0.15);
-        }
-        .cities-text {
-          color: var(--text-muted);
-        }
-        .top-right-callout {
-          color: var(--text-muted);
-          font-size: 0.725rem;
-        }
         .main-navbar {
-          padding: 14px 0;
+          padding: 12px 0;
         }
         .nav-content {
           display: flex;
@@ -270,7 +220,7 @@ export default function Navbar({ activePage, setActivePage }) {
           justify-content: center;
         }
         .brand-logo-img {
-          height: 40px;
+          height: 42px;
           width: auto;
           object-fit: contain;
           filter: drop-shadow(0 0 8px rgba(223, 185, 135, 0.35));
@@ -283,21 +233,26 @@ export default function Navbar({ activePage, setActivePage }) {
         .brand-text {
           display: flex;
           flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
         .brand-name {
           font-family: var(--font-serif);
-          font-size: 1.35rem;
+          font-size: 1.65rem;
           font-weight: 700;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.1em;
           color: var(--text-pure);
           line-height: 1;
+          text-align: center;
         }
         .brand-tagline {
-          font-size: 0.625rem;
-          letter-spacing: 0.18em;
+          font-size: 0.65rem;
+          letter-spacing: 0.2em;
           color: var(--bronze-light);
           font-weight: 600;
-          margin-top: 3px;
+          margin-top: 4px;
+          text-align: center;
+          width: 100%;
         }
         .desktop-nav-links {
           display: flex;
@@ -403,8 +358,10 @@ export default function Navbar({ activePage, setActivePage }) {
           right: 0;
           bottom: 0;
           width: 320px;
-          max-width: 85vw;
+          max-width: 86vw;
           height: 100vh;
+          height: 100dvh;
+          max-height: 100dvh;
           background: #11141c;
           border-left: 1px solid var(--border-bronze);
           box-shadow: -8px 0 32px rgba(0, 0, 0, 0.85);
@@ -418,7 +375,7 @@ export default function Navbar({ activePage, setActivePage }) {
           transform: translateX(0);
         }
         .mobile-drawer-inner {
-          padding: 24px;
+          padding: 20px 18px;
           display: flex;
           flex-direction: column;
           min-height: 100%;
@@ -427,8 +384,8 @@ export default function Navbar({ activePage, setActivePage }) {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding-bottom: 20px;
-          margin-bottom: 20px;
+          padding-bottom: 14px;
+          margin-bottom: 14px;
           border-bottom: 1px solid var(--border-subtle);
         }
         .drawer-close-btn {
@@ -444,19 +401,19 @@ export default function Navbar({ activePage, setActivePage }) {
         .mobile-nav-list {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          margin-bottom: 32px;
+          gap: 6px;
+          margin-bottom: 14px;
         }
         .mobile-nav-item {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 12px 14px;
+          padding: 10px 12px;
           background: rgba(255, 255, 255, 0.02);
           border: 1px solid transparent;
           border-radius: var(--radius-xs);
           color: var(--text-main);
-          font-size: 0.95rem;
+          font-size: 0.92rem;
           font-weight: 600;
           text-align: left;
         }
@@ -466,14 +423,14 @@ export default function Navbar({ activePage, setActivePage }) {
           color: var(--bronze-light);
         }
         .mobile-contact-block {
-          margin-top: auto;
+          margin-top: 4px;
           background: #171b25;
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-sm);
-          padding: 18px;
+          padding: 14px 16px;
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 4px;
         }
         .block-title {
           font-size: 0.725rem;
@@ -489,14 +446,15 @@ export default function Navbar({ activePage, setActivePage }) {
           color: var(--text-pure);
         }
         .office-sub {
-          font-size: 0.725rem;
+          font-size: 0.7rem;
           color: var(--text-dim);
-          margin-bottom: 10px;
+          margin-bottom: 8px;
+          line-height: 1.4;
         }
         .mobile-drawer-cta {
           width: 100%;
-          padding: 11px;
-          font-size: 0.85rem;
+          padding: 10px;
+          font-size: 0.825rem;
         }
 
         @media (max-width: 1024px) {
@@ -505,9 +463,6 @@ export default function Navbar({ activePage, setActivePage }) {
           }
         }
         @media (max-width: 860px) {
-          .top-authority-bar {
-            display: none;
-          }
           .desktop-nav-links {
             display: none;
           }

@@ -329,7 +329,7 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
               aspectRatio="16 / 10"
             />
             <BeforeAfterSlider 
-              beforeImage="/images/villa-foundation-before.jpg"
+              beforeImage="/images/building-foundation.jpg"
               afterImage="/images/villa-exterior-after.jpg?v=3"
               title="Ground-Up Foundation to 1-Kanal Luxury Villa"
               aspectRatio="16 / 10"
@@ -581,8 +581,28 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
             linear-gradient(180deg, rgba(8, 10, 15, 0.6) 0%, transparent 15%, transparent 80%, rgba(8, 10, 15, 0.98) 100%);
         }
         @media (max-width: 768px) {
+          .fullwidth-hero-section {
+            min-height: 80vh;
+            padding: 40px 0 60px;
+          }
+          .hero-backdrop-img {
+            object-position: 70% center;
+            filter: brightness(0.95);
+          }
           .hero-gradient-scrim {
-            background: rgba(8, 10, 15, 0.92);
+            background: linear-gradient(180deg, 
+              rgba(8, 10, 15, 0.72) 0%, 
+              rgba(8, 10, 15, 0.38) 35%, 
+              rgba(8, 10, 15, 0.65) 70%, 
+              rgba(8, 10, 15, 0.96) 100%
+            );
+          }
+          .hero-text-content {
+            background: rgba(9, 11, 16, 0.45);
+            backdrop-filter: blur(8px);
+            padding: 22px 18px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.08);
           }
         }
         .hero-overlap-container {
@@ -599,7 +619,7 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
           align-items: center;
           gap: 10px;
           font-size: 0.75rem;
-          font-weight: 700;
+          font-weight: 600;
           color: #dfb987;
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -615,7 +635,7 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
         .hero-main-title {
           font-family: var(--font-heading, 'Oswald', sans-serif);
           font-size: clamp(2.8rem, 5.5vw, 4.6rem);
-          font-weight: 700;
+          font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 0.02em;
           line-height: 1.05;
@@ -733,7 +753,7 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
         .d-title {
           font-family: var(--font-heading);
           font-size: 0.875rem;
-          font-weight: 700;
+          font-weight: 500;
           letter-spacing: 0.05em;
           color: #ffffff;
           margin-top: 4px;
@@ -809,6 +829,7 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
         }
         .pillar-title {
           font-size: 1.4rem;
+          font-weight: 500;
           color: #ffffff;
           margin-bottom: 8px;
         }
@@ -913,6 +934,7 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
         }
         .city-card-title {
           font-size: 1.3rem;
+          font-weight: 500;
           color: #ffffff;
           margin-bottom: 4px;
         }
@@ -1062,6 +1084,7 @@ export default function HomePage({ setActivePage, setProjectForModal }) {
         .service-card-heading {
           font-family: var(--font-heading, 'Oswald', sans-serif);
           font-size: 1.25rem;
+          font-weight: 500;
           color: #ffffff;
           margin-bottom: 10px;
           line-height: 1.25;

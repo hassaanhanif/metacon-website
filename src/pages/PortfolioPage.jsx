@@ -210,6 +210,7 @@ export default function PortfolioPage({ setActivePage, setProjectForModal }) {
         }
         .portfolio-page-title {
           font-size: clamp(2rem, 3.8vw, 3.2rem);
+          font-weight: 500;
           color: var(--text-pure);
           margin-bottom: 12px;
         }
@@ -365,6 +366,7 @@ export default function PortfolioPage({ setActivePage, setProjectForModal }) {
         }
         .card-heading {
           font-size: 1.15rem;
+          font-weight: 500;
           color: var(--text-pure);
           line-height: 1.25;
         }
@@ -414,6 +416,7 @@ export default function PortfolioPage({ setActivePage, setProjectForModal }) {
         }
         .cta-panel-title {
           font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+          font-weight: 500;
           color: var(--text-pure);
           margin-bottom: 6px;
         }
