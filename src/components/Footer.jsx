@@ -200,7 +200,7 @@ export default function Footer({ activePage = 'home', setActivePage }) {
         {/* Bottom Legal & Back to Top */}
         <div className="footer-sub-bar">
           <p className="copyright-line">
-            © {new Date().getFullYear()} METACON (Pvt.) Ltd. All rights reserved. Architectural Design, Turnkey Construction & Luxury Interiors.
+            © {new Date().getFullYear()} METACON. All rights reserved. Architectural Design, Turnkey Construction & Luxury Interiors.
           </p>
           <button className="top-scroll-btn" onClick={scrollToTop}>
             <span>Back to top</span>
