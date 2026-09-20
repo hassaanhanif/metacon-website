@@ -32,21 +32,31 @@ export default function AboutPage({ setActivePage }) {
       {/* 2. Full-Width WOW Feature Image of the 3 Partners */}
       <section className="about-media-feature-section">
         <div className="container-wide">
-          <div className="cinematic-portrait-frame">
-            <img 
-              src="/images/about-partners.jpg" 
-              alt="The three partners of Metacon around the meeting table" 
-              className="cinematic-portrait-img"
-            />
-            <div className="portrait-vignette-overlay" />
-            
-            {/* Top Glass Badge */}
-            <div className="portrait-floating-badge">
+          {/* Mobile Badge - Outside the frame */}
+          <div className="portrait-header-mobile">
+            <div className="portrait-floating-badge mobile-badge">
               <span className="live-status-dot" />
               <span>Founders &amp; Managing Partners</span>
             </div>
+          </div>
 
-            {/* Bottom Info Bar Overlay */}
+          <div className="cinematic-portrait-card">
+            <div className="cinematic-portrait-frame">
+              <img 
+                src="/images/about-partners.jpg" 
+                alt="The three partners of Metacon around the meeting table" 
+                className="cinematic-portrait-img"
+              />
+              <div className="portrait-vignette-overlay" />
+              
+              {/* Desktop Floating Badge (Inside frame on desktop) */}
+              <div className="portrait-floating-badge desktop-badge">
+                <span className="live-status-dot" />
+                <span>Founders &amp; Managing Partners</span>
+              </div>
+            </div>
+
+            {/* Bottom Info Bar: Overlay on desktop, clean card section below photo on mobile */}
             <div className="portrait-bottom-bar">
               <div className="portrait-bar-content">
                 <div className="portrait-meta-left">
@@ -502,7 +512,11 @@ export default function AboutPage({ setActivePage }) {
           padding: 10px 0 40px;
         }
 
-        .cinematic-portrait-frame {
+        .portrait-header-mobile {
+          display: none;
+        }
+
+        .cinematic-portrait-card {
           position: relative;
           width: 100%;
           border-radius: var(--radius-md);
@@ -510,15 +524,14 @@ export default function AboutPage({ setActivePage }) {
           border: 1px solid var(--border-gold);
           box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 40px rgba(197, 154, 99, 0.12);
           background: #0d0f15;
-          aspect-ratio: 16 / 9;
-          max-height: 680px;
         }
 
-        @media (max-width: 768px) {
-          .cinematic-portrait-frame {
-            aspect-ratio: 4 / 3;
-            max-height: 520px;
-          }
+        .cinematic-portrait-frame {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          max-height: 680px;
+          overflow: hidden;
         }
 
         .cinematic-portrait-img {
@@ -530,7 +543,7 @@ export default function AboutPage({ setActivePage }) {
           transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .cinematic-portrait-frame:hover .cinematic-portrait-img {
+        .cinematic-portrait-card:hover .cinematic-portrait-img {
           transform: scale(1.02);
         }
 
@@ -547,15 +560,12 @@ export default function AboutPage({ setActivePage }) {
         }
 
         .portrait-floating-badge {
-          position: absolute;
-          top: 24px;
-          left: 24px;
-          background: rgba(13, 16, 23, 0.82);
+          background: rgba(13, 16, 23, 0.85);
           backdrop-filter: blur(12px);
           border: 1px solid rgba(197, 154, 99, 0.4);
           padding: 8px 18px;
           border-radius: var(--radius-full);
-          display: flex;
+          display: inline-flex;
           align-items: center;
           gap: 10px;
           font-size: 0.82rem;
@@ -563,6 +573,13 @@ export default function AboutPage({ setActivePage }) {
           color: var(--text-pure);
           letter-spacing: 0.04em;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .desktop-badge {
+          position: absolute;
+          top: 24px;
+          left: 24px;
+          z-index: 2;
         }
 
         .live-status-dot {
@@ -588,6 +605,7 @@ export default function AboutPage({ setActivePage }) {
           background: linear-gradient(180deg, transparent 0%, rgba(10, 12, 17, 0.95) 100%);
           backdrop-filter: blur(4px);
           border-top: 1px solid rgba(255, 255, 255, 0.06);
+          z-index: 2;
         }
 
         .portrait-bar-content {
@@ -629,14 +647,74 @@ export default function AboutPage({ setActivePage }) {
           color: var(--text-pure);
         }
 
-        @media (max-width: 640px) {
-          .portrait-bottom-bar {
-            padding: 16px 18px;
+        @media (max-width: 768px) {
+          .portrait-header-mobile {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
           }
-          .portrait-floating-badge {
-            top: 16px;
-            left: 16px;
-            font-size: 0.75rem;
+
+          .desktop-badge {
+            display: none;
+          }
+
+          .mobile-badge {
+            font-size: 0.8rem;
+            padding: 8px 16px;
+          }
+
+          .cinematic-portrait-frame {
+            aspect-ratio: 3 / 2;
+            max-height: none;
+          }
+
+          .cinematic-portrait-img {
+            object-fit: cover;
+            object-position: center 25%;
+          }
+
+          .portrait-vignette-overlay {
+            display: none;
+          }
+
+          .portrait-bottom-bar {
+            position: static;
+            background: #11141c;
+            padding: 18px 20px;
+            backdrop-filter: none;
+            border-top: 1px solid rgba(197, 154, 99, 0.25);
+          }
+
+          .portrait-bar-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+          }
+
+          .p-brand-tag {
+            font-size: 0.88rem;
+            letter-spacing: 0.1em;
+          }
+
+          .p-brand-desc {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+          }
+
+          .portrait-meta-right {
+            width: 100%;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+
+          .p-pill {
+            font-size: 0.72rem;
+            padding: 4px 11px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(197, 154, 99, 0.25);
+            color: var(--gold-light);
           }
         }
 
